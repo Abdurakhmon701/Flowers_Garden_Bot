@@ -2,7 +2,7 @@ from states.all_data import *
 @dp.message_handler(commands=['start', 'help'],state='*')
 async def send_welcome(message: types.Message):
     """
-    This handler will be called when user sends `/start` or `/help` command
+    This handler will be called when user sends /start or /help command
     """
 
     await message.reply("Hi!\nI'm EchoBot!\nPowered by aiogram.",reply_markup=get_keyboard1())
@@ -20,6 +20,7 @@ def get_keyboard1():
             types.InlineKeyboardButton(text=i[1], callback_data=f"product_{i[0]}/{i[2]}"),
         ]
         keyboard.add(*buttons)
+
 
     return keyboard
 
@@ -88,3 +89,11 @@ async def callbacks_num_finish_fab(call: types.CallbackQuery,callback_data: dict
     await call.message.edit_text(f"Savatga kirilidi:\nMahsulot nomi: {data1[1]}\nSoni: {user_value}")
     await call.answer()
 
+# from aiogram.dispatcher import FSMContext
+# from aiogram.dispatcher.filters.state import StatesGroup, State
+
+# class BuyurtmaData(StatesGroup):
+#   score = State()
+#   raqam = State()
+
+#   from aiogram.utils.callback_data import CallbackData
